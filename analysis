@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import json
+import pandas as pd
+
+def analysis(file, user_id):
+    times = 0
+    minutes = 0
+    df = pd.read_json(file,typ='frame')
+    times = len(df[df['user_id']==user_id])
+    minutes = df[df['user_id']==user_id]['minutes'].sum()
+    return times, minutes
+if __name__ =="__main__":
+    print(analysis('/home/shiyanlou/Code/user_study.json',199071))
